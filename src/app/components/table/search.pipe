@@ -1,0 +1,36 @@
+import {Pipe, PipeTransform} from '@angular/core';
+
+@Pipe({
+    name: 'searchPipe'
+})
+
+export class SearchPipe implements PipeTransform {
+
+    /**
+     * Transform
+     * @param {string} searchableDevice
+     * @param {string} searchtext
+     * @returns {string}
+     */
+    public transform(device: string, searchText: string): string {
+        var searchableText = searchText.toLocaleLowerCase();
+        var searchableDevice = device.toLocaleLowerCase();
+
+        // If there are no devices to search, return nothing.
+        if(!device) {
+            return '';
+        }
+
+        // If no search text was entered, return everything.
+        if(!searchText) {
+            return device;
+        }
+
+        // If the device includes some part of the enterable search text, return it.
+        if(searchableDevice.includes(searchableText)) {
+            return device;
+        } else {
+            return '';
+        }
+    }
+}
