@@ -26,7 +26,7 @@ export class SearchPipe implements PipeTransform {
             return device;
         }
 
-        // If the device includes some part of the enterable search text, return it.
+        // If the device includes some part of the entered search text, return it.
         if(searchableDevice.includes(searchableText)) {
             return device;
         } else {
